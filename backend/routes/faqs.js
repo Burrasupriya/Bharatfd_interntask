@@ -5,15 +5,15 @@ const translate = require("google-translate-api-x");
 
 router.get("/", async (req, res) => {
   const lang = req.query.lang || "en"; 
-  const search = req.query.search || "";  // Capture the search query
+  const search = req.query.search || "";  
   
-  // SQL query with a WHERE condition to filter based on search term
+  
   const sql = `SELECT * FROM faqs WHERE question LIKE ?`;
   
   db.query(sql, [`%${search}%`], async (err, results) => {
     if (err) return res.status(500).json({ error: err.message });
 
-    // Translate FAQs if the language is not 'en'
+   
     const translatedFAQs = await Promise.all(
       results.map(async (faq) => {
         if (lang !== "en") {
@@ -29,7 +29,7 @@ router.get("/", async (req, res) => {
   });
 });
 
-// Add a new FAQ
+
 router.post("/", (req, res) => {
   const { question, answer } = req.body;
   if (!question || !answer) return res.status(400).json({ error: "All fields are required" });
@@ -41,7 +41,7 @@ router.post("/", (req, res) => {
   });
 });
 
-// Update an FAQ
+
 router.put("/:id", (req, res) => {
   const { question, answer } = req.body;
   const { id } = req.params;
@@ -52,7 +52,7 @@ router.put("/:id", (req, res) => {
   });
 });
 
-// Delete an FAQ
+
 router.delete("/:id", (req, res) => {
   const { id } = req.params;
   const sql = "DELETE FROM faqs WHERE id = ?";
