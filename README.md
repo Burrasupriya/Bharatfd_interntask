@@ -1,7 +1,111 @@
+I have used node.js and express.js 
+# Features
+
+View FAQs with multilingual support (English, Hindi, Bengali, etc.)
+
+Search for specific questions
+
+Admin panel for adding, editing, and deleting FAQs
+
+REST API built with Express and MySQL
+
+Frontend built with React
+
+
+# directory structure
+faq
+===>backend
+======server.js
+======>routes
+=========faqs.js
+======db.js
+===>src
+======>components
+=========home.js
+=========admin.js
+===>public
+===>readme.md
+
+
+# Technologies Used
+
+Backend: Node.js, Express.js, MySQL
+
+Frontend: React.js, Axios
+
+Translation: Google Translate API (google-translate-api-x)
+
+react should be react18 if we are doing npx create-react-app it is installing react19 and we should degrade it react18 inorder to support all the functions.
+
+# API Endpoints
+
+Get FAQs
+
+GET /api/faqs
+
+Query Parameters:
+
+lang: Language code (default: en)
+
+search: Search query (optional)
+
+Response: List of FAQs (translated if lang is specified)
+
+
+# Add FAQ
+
+POST /api/faqs
+
+Body:
+{
+  "question": "What is Node.js?",
+  "answer": "Node.js is a JavaScript runtime."
+}
+Response:
+{ "message": "FAQ added successfully", "id": 1 }
+
+# Update FAQ
+
+PUT /api/faqs/:id
+Body:
+{
+  "question": "Updated Question?",
+  "answer": "Updated Answer."
+}
+Response:
+{ "message": "FAQ updated successfully" }
+
+# Delete FAQ
+
+DELETE /api/faqs/:id
+Response:
+{ "message": "FAQ deleted successfully" }
+
+# Usage
+
+User Side
+
+Open the application in a browser.
+
+Select a language from the dropdown.
+
+Search for FAQs using the search bar.
+
+View translated FAQs.
+
+Admin Side
+
+Navigate to the Admin Panel.
+
+Add new FAQs using the form.
+
+Edit or delete existing FAQs.
+
+
+
+
 # Getting Started with Create React App
-
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 ## Available Scripts
 
 In the project directory, you can run:
